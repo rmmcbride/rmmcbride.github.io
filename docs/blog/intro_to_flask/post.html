@@ -1,0 +1,349 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3c.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="content-style-type" content="text/css">
+        <meta http-equiv="content-script-type" content="text/javascript">
+        <meta name=generator content="Sphinx">
+        <meta name=viewport content="width=device-width,initial-scale=1.0">
+        
+        <title>Introduction to Flask &mdash; DataKitty  documentation</title>
+
+        
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/main.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/genericons.css" type="text/css" /><link rel="stylesheet" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" /><link rel="stylesheet" href="../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" /><link rel="stylesheet" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/mobile.css" type="text/css" media="only screen and (max-device-width: 568px)">
+        
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>    
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+    </head>
+    <body>
+    <div class="content">
+        <header id="top-header">
+            <div class="left">
+    <ul class="breadcrumb">
+        <li>
+            <a href="../../index.html">DataKitty  documentation</a>
+             &raquo;
+        </li> 
+    </ul>
+            </div>
+            <div class="right">
+                
+    <ul class="relative">
+      <li >
+            <a href="../../genindex.html" title="General Index"
+               class="icon-index"
+                accesskey="I"></a>
+        </li>
+    </ul>
+            </div>
+            <div class="clearer"></div>
+        </header>
+        
+
+        <div class="documentwrapper">
+        <div class="sidebarwrapper">
+            <div class="sidebar">
+                    <h3><a href="../../index.html">Top</a></h3>  
+<h2>
+   
+  31 July 2021 
+</h2>
+
+<ul>
+   
+<li id="author">
+  <span
+    >Author:</span
+  >
+   
+  <a href="../author/rachael.html">Rachael</a>  
+</li>
+   
+<li id="category">
+  <span
+    >Category:</span
+  >
+   
+  <a href="../category/web-development.html">web development</a>  
+</li>
+ 
+<li id="tags">
+  <span
+    >Tags: </span
+  >
+   
+  <a href="../tag/flask.html">Flask</a>   
+  <a href="../tag/webapp.html">webapp</a>   
+  <a href="../tag/python.html">Python</a>   
+  <a href="../tag/javascript.html">JavaScript</a>   
+  <a href="../tag/css.html">CSS</a>   
+  <a href="../tag/html.html">HTML</a>   
+  <a href="../tag/frontend.html">frontend</a>   
+  <a href="../tag/backend.html">backend</a>  
+</li>
+ 
+</ul>
+
+<h3>
+  <a href="../../blog.html">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../your_first_flask_app_part_2/post.html"
+      >02 August - Your First Flask App - Part 2</a
+    >
+  </li>
+  
+  <li>
+    <a href="../your_first_flask_app_part_1/post.html"
+      >02 August - Your First Flask App - Part 1</a
+    >
+  </li>
+  
+</ul>
+
+<h3><a href="../tag.html">Tags</a></h3>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../tag/css.html">CSS</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../tag/flask.html">Flask</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../tag/html.html">HTML</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../tag/javascript.html">JavaScript</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../tag/python.html">Python</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../tag/backend.html">backend</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../tag/frontend.html">frontend</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../tag/webapp.html">webapp</a>
+  </li>
+   
+</ul>
+
+<h3>
+  <a href="../category.html">Categories</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../category/web-development.html">web development (3)</a>
+  </li>
+   
+</ul>
+
+<h3>
+  <a href="../archive.html">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../2021.html">2021 (3)</a>
+  </li>
+   
+</ul>
+
+            </div>
+        </div>
+            <div class="document">
+                <div class="body">
+                     <div class="section" id="introduction-to-flask">
+<h1>Introduction to Flask<a class="headerlink" href="#introduction-to-flask" title="Permalink to this headline">¶</a></h1>
+<p>Right now, web apps are a popular way to create and share your software applications with others. Recently I wanted to learn how to create one. I have started playing around with <a class="reference external" href="https://flask.palletsprojects.com/en/2.0.x/">Flask</a>, a popular web framework written in Python, to create web apps. Prior to this, the last time I dabbled with websites was 15+ years ago, using a <a class="reference external" href="https://www.ibm.com/cloud/learn/lamp-stack-explained">LAMP</a> stack for part of my PhD, so I had some residual knowledge of HTML and webpages. However, there was still a bit of a learning curve to get my web app up and running. Here I’d like to share some of my learnings so far along this journey to help others on their way to their first Flask app.</p>
+<div class="section" id="what-is-flask">
+<h2>What is Flask?<a class="headerlink" href="#what-is-flask" title="Permalink to this headline">¶</a></h2>
+<p>A convenient collection of tools and resources in Python that can be used to create a web app. More specifically, it is a micro web framework - it has all the basic features required for app developement in a neat package allowing you to get your web app up and running in a short space of time. Furthermore, while Flask is light weight, it is also easily extensible with many libraries and plugins available for you to enhance your web app further.</p>
+</div>
+<div class="section" id="what-is-a-web-app">
+<h2>What is a web app?<a class="headerlink" href="#what-is-a-web-app" title="Permalink to this headline">¶</a></h2>
+<p>A web app is a software application that runs on a web server instead of
+running locally on your computer’s operating system. It is essentially a series of webpages that you, the user, interacts with and where data is processed.</p>
+<img alt="Flow of data through a web app" class="align-center" src="../../_images/web_app_flow.png" />
+<p>Broadly speaking, there are two major components: i) the back end (or server side) and ii) the front end (or client side).</p>
+<p>The backend processes and retrieves data. In a Flask app, this backend processing is done by Python.</p>
+<p>The frontend presents a view of the data.
+The frontend made up of HTML, CSS and JavaScript code or files which together display a webpage or series of webpages. The user, by interacting with the webpages in the frontend, sends a request to the backend or server side. The request can be a request for data e.g. pull a specific query from a database, or a request to take data inputted by the user and process it in some way e.g store in a database or generate further data from it. The backend then sends the data, or the response, back to the frontend for viewing.</p>
+</div>
+<div class="section" id="how-to-structure-a-flask-web-app">
+<h2>How to structure a Flask web app<a class="headerlink" href="#how-to-structure-a-flask-web-app" title="Permalink to this headline">¶</a></h2>
+<p>There are lots of variations of Flask project file structures given online. One approach is below:</p>
+<img alt="Suggested project file structure for a Flask app" class="align-center" src="../../_images/flask_app_structure.png" />
+<p>Some key point here are:</p>
+<ul class="simple">
+<li><p><em>app.py</em> is the name commonly given to the driver file or the file that kicks off the app.</p></li>
+<li><p><em>config.py</em> is often included and allows the app creator to define specific configuration parameters for the app like database connection details, file locations etc.</p></li>
+<li><p><em>The templates folder</em> contains the necessary HTML files for the frontend. Note that these HTML files can have shared features, like a common menu or navigation bar. <a class="reference external" href="https://jinja.palletsprojects.com/en/3.0.x/">Jinja</a> is often used to re-use code between HTML files.</p></li>
+<li><p><em>The static folder</em> is a standard location for images, JavaScript files and CSS files. Javascript is a scripting language that is often used in then frontend to make webpages more dynamic and interactive for the user. CSS (Cascading Style Sheets) files are used to apply a style or format to the HTML files, and hence, create the ‘look and feel’ of webpages. Note: CSS has a vast array of formatting parameters, allowing for a really deep level of fine tuning, which is great but can take a long time. Depending on your available time and requirements for your app, it may be more convenient to download publically available style sheets for your app like <a class="reference external" href="https://getbootstrap.com/docs/3.4/css/">Bootstrap CSS</a> or <a class="reference external" href="https://bulma.io/">Bulma</a> .</p></li>
+</ul>
+</div>
+<div class="section" id="the-starting-point-index-html">
+<h2>The starting point - index.html<a class="headerlink" href="#the-starting-point-index-html" title="Permalink to this headline">¶</a></h2>
+<p>This is the usually entry point for a Flask app and what the user usually first sees and interacts with. From here, the user navigates through the webap, via buttons, drop-down menus, links and other interactive elements, sending information to the backend for processing.</p>
+</div>
+<div class="section" id="useful-interactive-elements">
+<h2>Useful interactive elements<a class="headerlink" href="#useful-interactive-elements" title="Permalink to this headline">¶</a></h2>
+<p>Some ways a user can interact with the webapp is through the use of:</p>
+<ul class="simple">
+<li><p>Hyperlinks - links to other parts of the webapp or to other webpages outside your webapp using the HTML &lt;a&gt; tag</p></li>
+<li><p>Drop-down menus - provide the user with a selection of options to choose from using the HTML &lt;select&gt; tag</p></li>
+<li><p>Forms - A digital ‘form’ where a user can input values and submit them for processing using the HTML &lt;form&gt; tag.</p></li>
+</ul>
+<p>All of the above send information from the user from the frontend to the backend for processing. <a class="reference external" href="https://www.w3schools.com">W3 Schools</a> and
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML">MDN web docs</a> are good references sites for learning more about specific HTML tags and their attributes.</p>
+</div>
+<div class="section" id="what-is-a-route">
+<h2>What is a route?<a class="headerlink" href="#what-is-a-route" title="Permalink to this headline">¶</a></h2>
+<p>In the backend, in Flask, ‘routes’ are used to map actions i.e. Python code to map web addresses or URLs.</p>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;index.html&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;&lt;p&gt;Hello, World!&lt;/p&gt;&quot;</span>
+</pre></div>
+</td></tr></table></div>
+<p>In the above code, when a request for data for index.html is triggered by the frontend, the backend uses routes to identify what needs to be done. In this case, the function <em>hello_world()</em> is triggered returning “Hello, World!” to the frontend for viewing.</p>
+</div>
+<div class="section" id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
+<p>Three tools / approaches that I have found useful so far:</p>
+<ul class="simple">
+<li><p>Using F12 to access the <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">browser’s developer tools</a></p></li>
+<li><p>Using the <a class="reference external" href="https://flask.palletsprojects.com/en/2.0.x/debugging/#the-built-in-debugger">built-in Flask debugger</a></p></li>
+<li><p>Good old fashioned print statements!</p></li>
+</ul>
+<p>And more recently, I’ve learnt about the <a class="reference external" href="https://www.jetbrains.com/help/pycharm/debugging-your-first-python-application.html#where-is-the-problem">PyCharm Debugger</a>, for those of you that use <a class="reference external" href="https://www.jetbrains.com/pycharm/">PyCharm</a> to develop your code.</p>
+<p>And that is it! Basic building blocks of a Flask app. If this has piqued your curiosity, I’d recommend you trying building your own app and give it a go.</p>
+</div>
+</div>
+
+<div class="section">
+     
+<div class="section">
+  <span style="float: left">
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+     Next: 
+    <a href="../your_first_flask_app_part_1/post.html">
+      Your First Flask App - Part 1 
+    </a>
+    
+  </span>
+</div>
+  
+</div>
+
+                </div>
+            </div> <!-- document -->
+
+
+        </div> <!-- documentwrapper -->
+        <footer>
+            <p class="show-copyright">
+                &copy; Copyright 2021, Rachael McBride.
+            </p>
+            <p class="show-sphinx">
+              Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.5.2.
+            </p>
+            
+              <p class="theme-info"><a href="https://pypi.python.org/pypi/hachibee-sphinx-theme">Sphinx-hachibee-theme</a> is hosted on <a href="https://github.com/hachibeeDI/Sphinx-hachibee-theme">Github</a></p>
+            
+        </footer>
+    </div>
+    <script type="text/javascript" src="../../_static/main.js" async></script>
+    </body>
+</html>
