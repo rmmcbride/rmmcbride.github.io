@@ -10,8 +10,8 @@ This post is part 2 to building your first Flask app. (In case you missed it, pa
 
 a) a way for the user to input their guess
 b) code that will check if the guess is correct
-c) code that will provide feedback to the user on their guess.
-
+c) code that will provide feedback to the user on their guess
+d) some simple CSS to adjust the look and feel of the web app.
 
 
 Let's guess
@@ -52,14 +52,14 @@ The code section
 		<input type="submit" value="Submit">
 	</form>
 	
-creates a HTML form with a text box for you to enter your guess and a Submit button. When you click Submit, your guess is sent to Flask. The code `action="play"` signifies that your guess is sent to the appropriate function associated with the play route in `app.py`. 
-The `method` attribute of form signifies how the information in the form is sent from the frontend to the backend. Here, the POST method is being used.
+creates a HTML form with a text box for you to enter your guess and a Submit button. When you click Submit, your guess is sent to Flask. The code `action="play"` signifies that your guess is sent to the appropriate function associated with the "play" route in `app.py`. 
+The `method` attribute of the form signifies how the information in the form is sent from the frontend to the backend. Here, the POST method is being used.
 
 .. note:: `Sending form data <https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form_data>`_ provides a good description of the GET and POST methods that are used to send form data.
 
 
 Now that we have our form to receive input data from the user, lets make the necessary modificaitons to `app.py` to pick up and process the details from the form.
-`app.py` already contains a 'play' route. Lets update:
+`app.py` already contains a "play" route. Lets update:
 
 .. code-block:: python
     :linenos:
@@ -72,13 +72,15 @@ Now that we have our form to receive input data from the user, lets make the nec
 		return render_template("play.html")
 
 Let unpick what is happening above.
-When the user presses Submit in the front-end, this triggers the request for the view of `play.html`. In the backend, this causes the activation of the `playtime()` function for the 'play' route. The code `request.form.get('guess')` looks for the key-value pair from the form that has the name 'guess'. If present, it prints out the current guess in the terminal where you are running Flask, and renders the code in `play.html`. For example, in the terminal output below you can see that my guess was the number 3.
+When the user presses Submit in the front-end, this triggers the request for the view of `play.html`. In the backend, this causes the activation of the `playtime()` function for the "play" route. The code `request.form.get('guess')` looks for the key-value pair from the form that has the name 'guess'. If present, it prints out the current guess in the terminal where you are running Flask, and renders the code in `play.html`. For example, in the terminal output below you can see that my guess was the number 3.
 
 .. image:: output_from_first_html_form.png
    :align: center
    :alt: Data i.e. your guess, captured by the HTML form
 
-The above verifies that we are correctly capturing our guess from the HTML form. Next, we would like to modify `play.html` so that we can view our guess, when present, in the webpage itself. We will do this in two steps. First, we will modify `play.html` using some Jinja, a web templating engine often used in Flask apps. Then, we will update `app.py` to process our guess from the form and send it back to `play.html` for display. 
+The above verifies that we are correctly capturing our guess from the HTML form. Next, we would like to modify `play.html` so that we can view our guess, when present, in the webpage itself. We will do this in two steps. First, we will modify `play.html` using `Jinja <https://jinja.palletsprojects.com/en/3.0.x/>`_, a web templating engine often used in Flask apps. Then, we will update `app.py` to process our guess from the form and send it back to `play.html` for display. 
+
+First modify `play.html` like so:
 
 .. code-block:: html
     :linenos:
@@ -114,9 +116,10 @@ The code section
 		Your guess was {{guess}}
 	{% endif %}
 	
-is an example of Jinja. Here we are using it to create an `if:else` statement in our HTML file. If we receive a value for the variable `guess`, then `play.html` will print ``"Your guess was "`` followed by the value that you guessed.
+is an example of Jinja. Here we are using it to create an `if:else` statement in our HTML file. If we receive a value for the variable `guess`, then `play.html` will print "Your guess was" followed by the value that you guessed.
 
 Now we will modify the `playtime()` function in `app.py`. It currently captures our guess from `play.html`. We will then get it to send back our guess for output in `play.html`.
+Modify the `playtime()` function in `app.py` using following code below:
 
 .. code-block:: python
     :linenos:
@@ -135,8 +138,8 @@ Now that we have the basics in place, we now need to build the concept of a game
 
 Define the game parameters
 ---------------------------
-A game starts when a 'Let's Play' hyperlink in index.html or a 'Restart Game' button in `play.html` is pressed. This sends information to `app.py` to choose a number.
-The user then takes turns to guess by entering their guess in play.html and hitting the 'Submit' button. When they hit 'Submit', the guess is sent to `app.py`. `app.py` compares the guess to the winning number and sends feedback to `play.html` to let the user know how they done. If the guess is correct i.e. the `guess = winning number`, the user is notified and the game ends. Otherwise, the user is notified that their guess is either too high or too low in `play.html`, and the user can submit another guess.
+A game starts when a 'Let's Play' hyperlink in `index.html` or a 'Restart Game' button in `play.html` is pressed. This sends information to `app.py` to choose randomly the winning number.
+The user then takes turns to guess the winning number by entering their guess in `play.html` and hitting the Submit button. When they hit Submit, the guess is sent to `app.py`. `app.py` compares the guess to the winning number and sends feedback to `play.html` to let the user know how they done. If the guess is correct i.e. the `guess = winning number`, the user is notified and the game ends. Otherwise, the user is notified that their guess is either too high or too low in `play.html`, and the user can submit another guess.
 
 Lets modify `app.py` to create a Game class that will help the app keep track of the current state of the game.
 
@@ -178,9 +181,9 @@ Add the following code to `app.py`:
 		else:
 			return "Congratulations! You guessed correctly", 1
 
-The above will allow us to create a Game object with a lower and upper range for the winning number. It's `new_game()` method sets up a game with a winning number and counter for the number of guesses the user makes. It also has a method, `play()`, that compares the user's guess to the winning number and provide feedback to the user on their guess.
+The above will allow us to create a Game object with a lower and upper range for the winning number. It's `new_game()` method sets up a game with a winning number and counter for the number of guesses the user makes. It also has a method, `play()`, that compares the user's guess to the winning number and provides feedback to the user on their guess.
 
-Please note that outside the Game class we then create a global instance of `Game()`. 
+Outside the Game class we then create a global instance of `Game()`. 
 
 .. code-block:: python
 
@@ -188,7 +191,7 @@ Please note that outside the Game class we then create a global instance of `Gam
 
 This allows the game instance to be accessed across all python functions within `app.py` . 
 
-Now lets add a new route that when triggered refreshes the global Game instance, essentially creating a fresh game. In `app.py` add:
+Now lets add a new route, that when triggered, refreshes the global Game instance `g`, essentially creating a fresh game. In `app.py` add:
 
 .. code-block:: python
     
@@ -233,7 +236,7 @@ In the above code, when the Flask route "new_game" is triggered it triggers its 
 .. note:: The re-direct from the Flask routes "index" to "new_game" to "play" happens so quickly behind the scenes, that the user only perceives moving from `index.html` to `play.html`.  
 
 
-Next step is to modify `play.html` to display the server feedback for or the guess. If we guess correctly, the form to submit guesses will disappear.
+Our next step is to modify `play.html` to display the server feedback for our guess. If we have guessed correctly, the form to submit any further guesses will disappear.
 
 .. code-block:: html
     :linenos:
@@ -284,14 +287,16 @@ For `play.html` add the following within the body of the HTML:
 	</form>
 	{% endif %}
 
-The above code will display a "New Game" button if we have guessed correctly. When we click on this "New Game" button, the `start_game()` function is called in `app.py` . This re-creates a new game and re-directs the frontend back to `play.html` . Here as the game is new, we have no guess and no feedback and `success = -1`, hence, the user is prompted to enter a guess.
+The above code will display a "New Game" button if we have guessed correctly. When we click on this "New Game" button, the `start_game()` function is called in `app.py` . This re-creates a new game and re-directs the frontend back to `play.html`. Here as the game is new, we have no guess and no feedback and `success = -1`, hence, the user is prompted to enter a guess.
+
+Run your Flask app and try playing a few games!
 
 Formatting
 ==========
 Now that we have our first Flask app working, we can enhance the look and feel using CSS (Cascading Style Sheets). First we will cover using CSS in-line in a specific html document. After that we will cover the option of using an external CSS file that contains all the required CSS for your app in one place.
 
 Basic structure of CSS
-______________________
+----------------------
 CSS is what is know as a style sheet language. It allows you a way to specify the look and feel of HTML through the use of "rulesets". A ruleset consists of a  
 selector (or the HTML tag of interest) and a series of declarations i.e. `property : value` combinations like "color: red;" or "font: 1.2em "Fira Sans", sans-serif;". For example,
 
@@ -305,15 +310,17 @@ selector (or the HTML tag of interest) and a series of declarations i.e. `proper
 
 is a CSS ruleset with a number of declarations for the HTML h1 tag. 
 
+In the below picture, we can see the difference between the default settings for h1 headings and h1 headings set to blue and extra large font size. 
+
 .. image:: change_h1_style.png
    :align: center
    :alt: Alter the HTML h1 style using css
    :class: with-border
 
-In the above picture, we can see the difference between the default settings for h1 headings and h1 headings set to blue and extra large font size. Lets apply some CSS to our app.
+Lets apply some CSS to our app.
 
 In-line CSS
-___________ 
+-----------
 One way to apply CSS to HTML is to directly use it in-line within your HTML documents.
 
 In `play.html` modify the h1 tag like so:
@@ -328,16 +335,20 @@ Modify the input tag for the `Submit` button in the play form like so:
 .. code-block:: html
     :linenos:
 
-	<input style="color:white;background:blue;text-align:center;font-family:system-ui" type="submit" value="Submit">
+	<input style="color:white;background:blue;text-align:center;font-family:system-ui" 
+	       type="submit" 
+	       value="Submit">
 	
 And the input tag for the `Submit` button in the new_game form like so:
 
 .. code-block:: html
     :linenos:
 
-	<input style="color:white;background:green;text-align:center;font-family:system-ui" type="submit" value="New Game">
+	<input style="color:white;background:green;text-align:center;font-family:system-ui" 
+	       type="submit" 
+	       value="New Game">
 
-Now restart your Flask app and try it out! You should see something similar to below for the 'Submit' button:
+Now restart your Flask app and try it out! You should see something similar to below for the Submit button:
 
 .. image:: inline_css_part1.png
    :align: center
@@ -358,7 +369,7 @@ and something similar to below for the 'New Game' button:
 Using in-line CSS is quick and convenient - looking at the HTML code you can see immediately what styling is applied to each HTML tag. However, as the number of HTML documents increases, it becomes tedious to add in-line CSS to all the relevant HTML tags, in particular, when you want to update all h1 tags to thave the same formating. In these cases, it makes more sense to use an external CSS file. Here all CSS rulesets for your project are in one location and are applied across all HTML documents in your project. You only have to define formatting for a particular HTML tag once and it is applied throughout, making updating the look and feel of your project much more easier. 
 
 External CSS
-____________
+------------
 The current convention is to store your CSS stylesheets in a folder name "static". Create a static folder for your CSS like below:
 
 .. image:: file_structure_css.png
@@ -366,23 +377,24 @@ The current convention is to store your CSS stylesheets in a folder name "static
    :alt: Location of the css file in the static folder
    :class: with-border
    
-In this folder create a file `style.css`. Next we extract the inline CSS from `play.html`, add as required to `style.css`, and add the necessary hooks within `play.html` so that it can pull the required information from style.css
+In this folder create a file `style.css`. Next we extract the inline CSS from `play.html`, add as required to `style.css`, and add the necessary hooks within `play.html` so that it can pull the required information from `style.css`.
 
-In `play.html`, there are two buttons, both of tyep "submit" - the "Submit" button and the "New Game" button. Lets format each of these buttons differently so it is easier to visually distnguish between the two in the web app. To do this, we extract out the inline CSS and give each input tag an id. This id can be used as a reference across the web app.
+In `play.html`, there are two buttons, both of type "submit" - the "Submit" button and the "New Game" button. Lets format each of these buttons differently so it is easier to visually distinguish between the two in the web app. To do this, we extract out the inline CSS and give each input tag an id. This id can be used as a reference across the web app.
+
+Make the following changes to `play.html`. First:
 
 .. code-block:: html
     :linenos:
     
     	<input id="submit_guess" type="submit" value="Submit">
 
-and
-    
+And then next:
+
 .. code-block:: html
     :linenos:
     
     	<input id="new_game" type="submit" value="New Game">
     	
- 
  Then in `style.css`, we make reference to each input tag id using `#`:
  
  .. code-block:: css
