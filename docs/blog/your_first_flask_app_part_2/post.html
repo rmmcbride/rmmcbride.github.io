@@ -581,12 +581,11 @@ The user then takes turns to guess the winning number by entering their guess in
 <p>The above code will display a “New Game” button if we have guessed correctly. When we click on this “New Game” button, the <cite>start_game()</cite> function is called in <cite>app.py</cite> . This re-creates a new game and re-directs the frontend back to <cite>play.html</cite>. Here as the game is new, we have no guess and no feedback and <cite>success = -1</cite>, hence, the user is prompted to enter a guess.</p>
 <p>Run your Flask app and try playing a few games!</p>
 </div>
-</div>
 <div class="section" id="formatting">
-<h1>Formatting<a class="headerlink" href="#formatting" title="Permalink to this headline">¶</a></h1>
+<h2>Formatting<a class="headerlink" href="#formatting" title="Permalink to this headline">¶</a></h2>
 <p>Now that we have our first Flask app working, we can enhance the look and feel using CSS (Cascading Style Sheets). First we will cover using CSS in-line in a specific html document. After that we will cover the option of using an external CSS file that contains all the required CSS for your app in one place.</p>
 <div class="section" id="basic-structure-of-css">
-<h2>Basic structure of CSS<a class="headerlink" href="#basic-structure-of-css" title="Permalink to this headline">¶</a></h2>
+<h3>Basic structure of CSS<a class="headerlink" href="#basic-structure-of-css" title="Permalink to this headline">¶</a></h3>
 <p>CSS is what is know as a style sheet language. It allows you a way to specify the look and feel of HTML through the use of “rulesets”. A ruleset consists of a
 selector (or the HTML tag of interest) and a series of declarations i.e. <cite>property : value</cite> combinations like “color: red;” or “font: 1.2em “Fira Sans”, sans-serif;”. For example,</p>
 <div class="highlight-css notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
@@ -604,7 +603,7 @@ selector (or the HTML tag of interest) and a series of declarations i.e. <cite>p
 <p>Lets apply some CSS to our app.</p>
 </div>
 <div class="section" id="in-line-css">
-<h2>In-line CSS<a class="headerlink" href="#in-line-css" title="Permalink to this headline">¶</a></h2>
+<h3>In-line CSS<a class="headerlink" href="#in-line-css" title="Permalink to this headline">¶</a></h3>
 <p>One way to apply CSS to HTML is to directly use it in-line within your HTML documents.</p>
 <p>In <cite>play.html</cite> modify the h1 tag like so:</p>
 <div class="highlight-html notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;font-family:system-ui; color: blue;&quot;</span><span class="p">&gt;</span>Lets Play!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
@@ -637,7 +636,7 @@ selector (or the HTML tag of interest) and a series of declarations i.e. <cite>p
 <p>Using in-line CSS is quick and convenient - looking at the HTML code you can see immediately what styling is applied to each HTML tag. However, as the number of HTML documents increases, it becomes tedious to add in-line CSS to all the relevant HTML tags, in particular, when you want to update all h1 tags to thave the same formating. In these cases, it makes more sense to use an external CSS file. Here all CSS rulesets for your project are in one location and are applied across all HTML documents in your project. You only have to define formatting for a particular HTML tag once and it is applied throughout, making updating the look and feel of your project much more easier.</p>
 </div>
 <div class="section" id="external-css">
-<h2>External CSS<a class="headerlink" href="#external-css" title="Permalink to this headline">¶</a></h2>
+<h3>External CSS<a class="headerlink" href="#external-css" title="Permalink to this headline">¶</a></h3>
 <p>The current convention is to store your CSS stylesheets in a folder name “static”. Create a static folder for your CSS like below:</p>
 <img alt="Location of the css file in the static folder" class="with-border align-center" src="../../_images/file_structure_css.png" />
 <p>In this folder create a file <cite>style.css</cite>. Next we extract the inline CSS from <cite>play.html</cite>, add as required to <cite>style.css</cite>, and add the necessary hooks within <cite>play.html</cite> so that it can pull the required information from <cite>style.css</cite>.</p>
@@ -647,6 +646,39 @@ selector (or the HTML tag of interest) and a series of declarations i.e. <cite>p
 </pre></div>
 </td></tr></table></div>
 <p>And then next:</p>
+<div class="highlight-html notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;new_game&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;New Game&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Then in <cite>style.css</cite>, we make reference to each input tag id using <cite>#</cite>:</p>
+<blockquote>
+<div><div class="highlight-css notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>    <span class="p">#</span><span class="nn">submit_guess</span><span class="p">{</span>
+        <span class="k">color</span><span class="p">:</span><span class="kc">white</span><span class="p">;</span>
+        <span class="k">background</span><span class="p">:</span><span class="kc">blue</span><span class="p">;</span>
+        <span class="k">text-align</span><span class="p">:</span><span class="kc">center</span><span class="p">;</span>
+        <span class="k">font-family</span><span class="p">:</span><span class="n">system-ui</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="p">#</span><span class="nn">new_game</span><span class="p">{</span>
+            <span class="k">color</span><span class="p">:</span><span class="kc">white</span><span class="p">;</span>
+            <span class="k">background</span><span class="p">:</span><span class="kc">green</span><span class="p">;</span>
+            <span class="k">text-align</span><span class="p">:</span><span class="kc">center</span><span class="p">;</span>
+            <span class="k">font-family</span><span class="p">:</span><span class="n">system-ui</span><span class="p">;</span>
+    <span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
 <p>This allows us to define the formating rules or declarations that will be applied relevant HTML tags throughout the webapp.</p>
 <p>Next, we would like to extract the formating for the h1 header in <cite>play.html</cite>, and add it to <cite>style.css</cite> in such a way that it is applied to all <cite>h1</cite> header tags across the app. In short, we want consistent formatting of headers across the app.</p>
 <p>In <cite>play.html</cite>, we change the h1 tag back to:</p>
@@ -674,10 +706,13 @@ selector (or the HTML tag of interest) and a series of declarations i.e. <cite>p
 </pre></div>
 </td></tr></table></div>
 <p>and re-run your Flask app. Your app should look the same as it did with the ineternal CSS, but now all CSS instructions are located in the one place of your app, making any further updates or changes easier to apply.</p>
-<p>If you explore various CSS resources further online, you will see that CSS is highly adaptability with many layers of options available for you to choose from. Sometimes, however, you may prefer to use pre-made CSS frameworks to save you time and give a more familiar look and feel to your web app to those already out there online. Some examples of popular CSS frameworks:
-* ‘&lt;<a class="reference external" href="https://getbootstrap.com/">https://getbootstrap.com/</a>&gt; Bootstrap’_
-* ‘&lt;<a class="reference external" href="https://bulma.io/">https://bulma.io/</a>&gt; Bulma’_
-I’d recommend you try out a few.</p>
+<p>If you explore various CSS resources further online, you will see that CSS is highly adaptability with many layers of options available for you to choose from. Sometimes, however, you may prefer to use pre-made CSS frameworks to save you time and give a more familiar look and feel to your web app to those already out there online. Some examples of popular CSS frameworks:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://getbootstrap.com/">Bootstrap</a></p></li>
+<li><p><a class="reference external" href="https://bulma.io/">Bulma</a></p></li>
+</ul>
+<p>I’d recommend you try out a few.</p>
+</div>
 </div>
 </div>
 <div class="section" id="suggestions-for-further-enhancements">
@@ -685,7 +720,7 @@ I’d recommend you try out a few.</p>
 <p>Now that you have created your first Flask app, you have a good foundation upon which to build some more functionality. If you would like to play around and develop further, some possible things you could try out are:
 1. Convert the “Let’s Play” hyperlink in index.html to a button and style
 2. Display the current number of guesses on <cite>play.html</cite> to the user
-3. Try a CSS framework to enhance the look and feel of the app</p>
+3. Try a CSS framework to enhance the look and feel of the app.</p>
 <p>Enjoy!</p>
 </div>
 

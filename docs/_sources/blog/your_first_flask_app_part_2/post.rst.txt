@@ -292,11 +292,11 @@ The above code will display a "New Game" button if we have guessed correctly. Wh
 Run your Flask app and try playing a few games!
 
 Formatting
-==========
+----------
 Now that we have our first Flask app working, we can enhance the look and feel using CSS (Cascading Style Sheets). First we will cover using CSS in-line in a specific html document. After that we will cover the option of using an external CSS file that contains all the required CSS for your app in one place.
 
 Basic structure of CSS
-----------------------
+""""""""""""""""""""""
 CSS is what is know as a style sheet language. It allows you a way to specify the look and feel of HTML through the use of "rulesets". A ruleset consists of a  
 selector (or the HTML tag of interest) and a series of declarations i.e. `property : value` combinations like "color: red;" or "font: 1.2em "Fira Sans", sans-serif;". For example,
 
@@ -320,7 +320,7 @@ In the below picture, we can see the difference between the default settings for
 Lets apply some CSS to our app.
 
 In-line CSS
------------
+"""""""""""
 One way to apply CSS to HTML is to directly use it in-line within your HTML documents.
 
 In `play.html` modify the h1 tag like so:
@@ -369,7 +369,7 @@ and something similar to below for the 'New Game' button:
 Using in-line CSS is quick and convenient - looking at the HTML code you can see immediately what styling is applied to each HTML tag. However, as the number of HTML documents increases, it becomes tedious to add in-line CSS to all the relevant HTML tags, in particular, when you want to update all h1 tags to thave the same formating. In these cases, it makes more sense to use an external CSS file. Here all CSS rulesets for your project are in one location and are applied across all HTML documents in your project. You only have to define formatting for a particular HTML tag once and it is applied throughout, making updating the look and feel of your project much more easier. 
 
 External CSS
-------------
+""""""""""""
 The current convention is to store your CSS stylesheets in a folder name "static". Create a static folder for your CSS like below:
 
 .. image:: file_structure_css.png
@@ -395,7 +395,7 @@ And then next:
     
     	<input id="new_game" type="submit" value="New Game">
     	
- Then in `style.css`, we make reference to each input tag id using `#`:
+Then in `style.css`, we make reference to each input tag id using `#`:
  
  .. code-block:: css
     :linenos:
@@ -447,8 +447,10 @@ Now we have our CSS in place, the next step is to tell the HTML files where to f
 and re-run your Flask app. Your app should look the same as it did with the ineternal CSS, but now all CSS instructions are located in the one place of your app, making any further updates or changes easier to apply.
 
 If you explore various CSS resources further online, you will see that CSS is highly adaptability with many layers of options available for you to choose from. Sometimes, however, you may prefer to use pre-made CSS frameworks to save you time and give a more familiar look and feel to your web app to those already out there online. Some examples of popular CSS frameworks:
-* '<https://getbootstrap.com/> Bootstrap'_
-* '<https://bulma.io/> Bulma'_
+
+* `Bootstrap <https://getbootstrap.com/>`_
+* `Bulma <https://bulma.io/>`_
+
 I'd recommend you try out a few. 
 
  
@@ -457,7 +459,7 @@ Suggestions for further enhancements
 Now that you have created your first Flask app, you have a good foundation upon which to build some more functionality. If you would like to play around and develop further, some possible things you could try out are:
 1. Convert the "Let's Play" hyperlink in index.html to a button and style
 2. Display the current number of guesses on `play.html` to the user
-3. Try a CSS framework to enhance the look and feel of the app 
+3. Try a CSS framework to enhance the look and feel of the app. 
 
 Enjoy!
 
